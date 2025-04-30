@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Trip - traveLLex</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 60px;
+        }
+        
+        .back-to-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: var(--primary-dark);
+            font-weight: 500;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .back-to-home i {
+            margin-right: 6px;
+        }
+        
+        .plan-trip {
+            padding: 40px 0 80px;
+            background: url('{{ url_for('static', filename='images/plan-trip-bg.jpg') }}') center/cover no-repeat fixed;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .section-header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+        }
+        
+        .trip-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.15);
+            padding: 40px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-section h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .generate-btn {
+            background: linear-gradient(to right, var(--primary), #25a5c4);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 30px auto 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: var(--transition);
+            resize: vertical;
+        }
+        
+        textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Home Link -->
+    <a href="/" class="back-to-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+    
+    <!-- Plan Trip Section -->
+    <section class="plan-trip">
+        <div class="container">
+            <div class="section-header">
+                <h2>Plan Your Dream Trip</h2>
+                <p>Fill in your preferences below and our AI will create a personalized travel itinerary just for you</p>
+            </div>
+            
+            <div class="trip-form">
+                <form id="trip-planner-form">
+                    <!-- Trip Basics -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-map-marker-alt"></i> Trip Basics</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="destination">Destination</label>
+                                <input type="text" id="destination" name="destination" placeholder="Where do you want to go?" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="start-date">Start Date</label>
+                                <input type="date" id="start-date" name="start_date" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="end-date">End Date</label>
+                                <input type="date" id="end-date" name="end_date" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="travelers">Number of Travelers</label>
+                                <select id="travelers" name="travelers" required>
+                                    <option value="">Select number of travelers</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10+">10+</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budget">Budget (per person)</label>
+                                <input type="range" id="budget" name="budget" min="500" max="10000" step="100" value="2000" data-output="budget-value" oninput="updateRangeValue(this)">
+                                <div class="range-values">
+                                    <span>$500</span>
+                                    <span id="budget-value">$2000</span>
+                                    <span>$10000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Travel Preferences -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-heart"></i> Travel Preferences</h3>
+                        
+                        <div class="form-group">
+                            <label>Accommodation Type</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="hotel" name="accommodation[]" value="hotel">
+                                    <label for="hotel">Hotel</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="hostel" name="accommodation[]" value="hostel">
+                                    <label for="hostel">Hostel</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="apartment" name="accommodation[]" value="apartment">
+                                    <label for="apartment">Apartment</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="resort" name="accommodation[]" value="resort">
+                                    <label for="resort">Resort</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Activities</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="sightseeing" name="activities[]" value="sightseeing">
+                                    <label for="sightseeing">Sightseeing</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="adventure" name="activities[]" value="adventure">
+                                    <label for="adventure">Adventure</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cultural" name="activities[]" value="cultural">
+                                    <label for="cultural">Cultural</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="relaxation" name="activities[]" value="relaxation">
+                                    <label for="relaxation">Relaxation</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="food-tours" name="activities[]" value="food-tours">
+                                    <label for="food-tours">Food Tours</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="shopping" name="activities[]" value="shopping">
+                                    <label for="shopping">Shopping</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Transportation</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="flight" name="transportation[]" value="flight">
+                                    <label for="flight">Flight</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="train" name="transportation[]" value="train">
+                                    <label for="train">Train</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="rental-car" name="transportation[]" value="rental-car">
+                                    <label for="rental-car">Rental Car</label>
+                                </div>
+                                
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="public-transit" name="transportation[]" value="public-transit">
+                                    <label for="public-transit">Public Transit</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="special-requests">Special Requests</label>
+                            <textarea id="special-requests" name="special_requests" rows="3" placeholder="Any specific requirements or places you'd like to visit?"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="generate-btn">Generate Travel Plan <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

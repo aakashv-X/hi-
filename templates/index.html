@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>traveLLex - Travel Smart, Enjoy More</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div style="margin-top: 20px; font-weight: 500;">Loading traveLLex...</div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header id="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">traveLLex</a>
+                
+                <!-- <nav class="main-nav">
+                    <ul>
+                        <li><a href="/" class="active">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="/plan-trip">Plan Trip</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </nav> -->
+                
+                <div class="auth-buttons">
+                    <a href="/login" class="btn btn-outline">Login</a>
+                    <a href="/register" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p>BEST DESTINATIONS AROUND THE WORLD</p>
+                <h1>Travel Smart Enjoy<br>More Plan<br>Stress-Free</h1>
+                <div class="hero-buttons">
+                    <a href="/plan-trip" class="btn btn-primary">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Plan My Trip
+                    </a>
+                    <a href="#" class="btn btn-demo">
+                        <i class="fas fa-play"></i>
+                        Play Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a href="#services" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+            <span>Explore</span>
+        </a>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-subtitle">CATEGORY</p>
+                <h2 class="section-title">We Offer Best Services</h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3 class="service-title">Weather Insights</h3>
+                    <p class="service-text">Get real-time weather updates to plan your activities and avoid unexpected changes</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="service-title">Best Travel Deals</h3>
+                    <p class="service-text">Our smart tool scans and compares transport options to get you the most affordable and convenient routes</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="service-title">Personalized Events</h3>
+                    <p class="service-text">Discover must-visit places, adventure activities, and cultural events tailored to your preferences</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3 class="service-title">Custom Itineraries</h3>
+                    <p class="service-text">Generate a fully optimized travel plan based on your budget, interests, and real-time availability</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <p class="section-subtitle">MOSTLY SEARCHED</p>
+                <h2 class="section-title">Top Destinations</h2>
+            </div>
+            
+            <div class="destinations-grid">
+                <!-- Destination 1 -->
+                <div class="destination-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-1.jpg') }}" alt="Banaras, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Banaras, India</h3>
+                        <p class="destination-location">Varanasi, UP</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$5,42k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">10 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 2 -->
+                <div class="destination-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-2.jpg') }}" alt="Goa, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Goa, India</h3>
+                        <p class="destination-location">North & South Goa</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$4.2k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">12 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 3 -->
+                <div class="destination-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-3.jpg') }}" alt="Kullu & Manali, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Kullu & Manali, India</h3>
+                        <p class="destination-location">Himachal Pradesh</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$15k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">28 Days Trip</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="explore-more" data-aos="fade-up">
+                <a href="/destinations" class="btn btn-outline">Explore More Destinations</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Booking Process Section -->
+    <section class="booking-process">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">EASY AND FAST</p>
+                <h2 class="section-title">Book your next trip in 3 easy steps</h2>
+            </div>
+            
+            <div class="process-container">
+                <div class="process-steps">
+                    <!-- Step 1 -->
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Choose Your Destination</h3>
+                            <p>Tell us your budget and travel preferences. Our smart tool will generate the best options for you</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Customize & Confirm</h3>
+                            <p>Get a structured itinerary with real-time pricing. Modify and confirm your selections with ease</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Pack & Enjoy</h3>
+                            <p>Travellex helps you find the best deals, plan smoothly, and enjoy your trip!</p>
+                        </div>
+                    </div>
+                    
+                    <a href="/plan-trip" class="btn btn-primary">Start Planning Now</a>
+                </div>
+                
+                <div class="process-example">
+                    <div class="example-card">
+                        <div class="example-image">
+                            <img src="{{ url_for('static', filename='images/destination-1.jpg') }}" alt="Trip To Banaras">
+                        </div>
+                        <div class="example-info">
+                            <h3 class="example-title">Trip To Banaras</h3>
+                            <div class="example-meta">
+                                <span>14-29 June</span>
+                                <span>by Lakshmi Patel</span>
+                            </div>
+                            <p>20 people going</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">TESTIMONIALS</p>
+                <h2 class="section-title">What people say about Us</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="{{ url_for('static', filename='images/testimonial-1.jpg') }}" alt="Mike Taylor">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Mike Taylor</h4>
+                            <p>Delhi, India</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The trip planner feature was incredible. It helped me organize my Manali trip with ease, providing great recommendations that fit my budget."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="{{ url_for('static', filename='images/testimonial-2.jpg') }}" alt="Thomas Wagner">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Thomas Wagner</h4>
+                            <p>Mumbai, India</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Never had a smoother travel experience. The weather insights feature helped me pack correctly and avoid bad weather during my Goa trip."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="{{ url_for('static', filename='images/testimonial-3.jpg') }}" alt="Kelly Williams">
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Kelly Williams</h4>
+                            <p>Kolkata, India</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The custom itinerary made our family vacation to Varanasi perfect! Every detail was considered, and we saved so much time and money."</p>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">FAQs</p>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does your trip planning service work?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our trip planning service uses AI to analyze your preferences, budget, and travel dates to create a personalized itinerary. You can specify your interests, accommodation preferences, and must-visit attractions, and our system will generate an optimized plan with real-time availability and pricing.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is there a fee for trip modifications?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, we don't charge any fee for making modifications to your trip plan. You can adjust your itinerary, change accommodations, or update activities as many times as you like before finalizing your booking.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What pricing plans do you offer?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer three pricing tiers: Basic (free), Premium ($9.99/month), and Elite ($19.99/month). The free plan includes basic trip planning, while premium plans offer features like real-time weather updates, 24/7 travel support, exclusive deals, and customized itineraries with local experiences.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you provide customer support?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide customer support via chat, email, and phone. Basic users can access email support with a 24-hour response time, while Premium and Elite users get priority support with faster response times and 24/7 emergency assistance during their trips.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is your refund policy?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For subscription plans, we offer a 14-day money-back guarantee. For bookings made through our platform, refund policies vary by service provider. We clearly display the cancellation and refund terms before you complete your booking. In case of any issues, our customer support team will help you navigate the refund process.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to start your adventure?</h2>
+            <p>Join thousands of happy travelers who have discovered the ease of planning with traveLLex</p>
+            <a href="/plan-trip" class="btn btn-primary">Start Planning Now</a>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Stay Updated with Travel Tips & Exclusive Offers</h3>
+            <p>Join our newsletter to receive personalized travel recommendations, insider tips, and special deals delivered directly to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your Email Address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>traveLLex</h3>
+                    <p>Book your trip in minute, get full Control for much longer</p>
+                    <a href="/plan-trip">Plan Your Next Trip</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Mobile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Help/FAQ</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Affiliate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-app">
+                    <h4>Discover our app</h4>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <i class="fab fa-apple"></i>
+                            <div>
+                                <span>Download on the</span>
+                                <p>App Store</p>
+                            </div>
+                        </a>
+                        <a href="#" class="app-button">
+                            <i class="fab fa-google-play"></i>
+                            <div>
+                                <span>GET IT ON</span>
+                                <p>Google Play</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 traveLLex. All rights reserved</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content">
+            <div class="modal-left login-bg">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account and continue your travel planning</p>
+            </div>
+            <div class="modal-right">
+                <form id="login-form" class="auth-form" onsubmit="return validateForm('login-form')">
+                    <h3>Login</h3>
+                    
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" placeholder="Email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="login-password" name="password" placeholder="Password" required>
+                            <div class="password-toggle">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Login</button>
+                    
+                    <div class="switch-auth">
+                        Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content">
+            <div class="modal-left register-bg">
+                <h2>Create your Account</h2>
+                <p>Join traveLLex to plan and book your perfect trip experience</p>
+            </div>
+            <div class="modal-right">
+                <form id="signup-form" class="auth-form" onsubmit="return validateForm('signup-form')">
+                    <h3>Sign Up</h3>
+                    
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="email" placeholder="Email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="signup-password" name="password" placeholder="Create password" required>
+                            <div class="password-toggle">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <p class="password-hint">Min. 8 characters with 1 uppercase, 1 lowercase, and 1 number</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-item terms-checkbox">
+                            <input type="checkbox" id="terms" name="terms" required style="width: 14px; height: 14px; min-width: 14px; min-height: 14px;">
+                            <label for="terms" style="font-size: 0.75rem; color: #666666; font-weight: 400;">I accept the Terms & Conditions</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Create Account →</button>
+                    
+                    <div class="switch-auth">
+                        Already have an account? <a href="#" id="switch-to-login">Log in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+        
+        // Page loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 800);
+        });
+    </script>
+</body>
+</html> 

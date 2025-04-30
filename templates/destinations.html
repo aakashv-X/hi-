@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - traveLLex</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <style>
+        .destinations-page {
+            padding: 150px 0 100px;
+        }
+        
+        .filter-section {
+            margin-bottom: 40px;
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .filter-group select, 
+        .filter-group input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .load-more {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        /* Destination category navigation */
+        .destinations-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .destination-category {
+            padding: 10px 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text);
+        }
+        
+        .destination-category:hover {
+            background-color: var(--primary-light);
+            color: var(--white);
+        }
+        
+        .destination-category.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">traveLLex</a>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/#services">Services</a></li>
+                        <li><a href="/destinations" class="active">Destinations</a></li>
+                        <li><a href="/plan-trip">Plan Trip</a></li>
+                        <li><a href="/#testimonials">Testimonials</a></li>
+                        <li><a href="/#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <button id="login-btn" class="btn btn-outline">Login</button>
+                    <button id="signup-btn" class="btn btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Destinations Section -->
+    <section class="destinations-page">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-subtitle">DISCOVER</p>
+                <h2 class="section-title">Explore Top Destinations</h2>
+                <p>Find your perfect getaway from our curated list of incredible destinations</p>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <form id="destination-filter">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="search">Search</label>
+                            <input type="text" id="search" name="search" placeholder="Search destinations...">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="country">Country</label>
+                            <select id="country" name="country">
+                                <option value="">All Countries</option>
+                                <option value="india">India</option>
+                                <option value="thailand">Thailand</option>
+                                <option value="japan">Japan</option>
+                                <option value="indonesia">Indonesia</option>
+                                <option value="vietnam">Vietnam</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" name="budget">
+                                <option value="">All Budgets</option>
+                                <option value="economy">Economy ($0-$1000)</option>
+                                <option value="mid-range">Mid-Range ($1000-$3000)</option>
+                                <option value="luxury">Luxury ($3000+)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="duration">Duration</label>
+                            <select id="duration" name="duration">
+                                <option value="">Any Duration</option>
+                                <option value="weekend">Weekend Getaway (1-3 days)</option>
+                                <option value="short">Short Trip (4-7 days)</option>
+                                <option value="medium">Medium Trip (8-14 days)</option>
+                                <option value="long">Long Trip (15+ days)</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Destination Categories -->
+            <div class="destinations-nav">
+                <div class="destination-category active" data-category="all">All</div>
+                <div class="destination-category" data-category="beach">Beaches</div>
+                <div class="destination-category" data-category="mountain">Mountains</div>
+                <div class="destination-category" data-category="city">Cities</div>
+                <div class="destination-category" data-category="historical">Historical</div>
+                <div class="destination-category" data-category="adventure">Adventure</div>
+            </div>
+            
+            <!-- Destinations Grid -->
+            <div class="destination-grid">
+                <!-- Destination 1 -->
+                <div class="destination-card" data-category="historical">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-1.jpg') }}" alt="Banaras, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Banaras, India</h3>
+                        <p class="destination-location">Varanasi, UP</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$5,42k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">10 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 2 -->
+                <div class="destination-card" data-category="beach">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-2.jpg') }}" alt="Goa, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Goa, India</h3>
+                        <p class="destination-location">North & South Goa</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$4.2k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">12 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 3 -->
+                <div class="destination-card" data-category="mountain">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-3.jpg') }}" alt="Kullu & Manali, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Kullu & Manali, India</h3>
+                        <p class="destination-location">Himachal Pradesh</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$15k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">28 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 4 -->
+                <div class="destination-card" data-category="mountain">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-4.jpg') }}" alt="Darjeeling, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Darjeeling, India</h3>
+                        <p class="destination-location">West Bengal</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$4.5k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">8 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 5 -->
+                <div class="destination-card" data-category="city">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-5.jpg') }}" alt="Mumbai, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Mumbai, India</h3>
+                        <p class="destination-location">Maharashtra</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$3.8k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.5</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">5 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 6 -->
+                <div class="destination-card" data-category="beach">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-6.jpg') }}" alt="Andaman & Nicobar, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Andaman & Nicobar, India</h3>
+                        <p class="destination-location">Bay of Bengal</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$12k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">14 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 7 -->
+                <div class="destination-card" data-category="historical">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-7.jpg') }}" alt="Agra, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Agra, India</h3>
+                        <p class="destination-location">Uttar Pradesh</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$2.5k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">3 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 8 -->
+                <div class="destination-card" data-category="adventure">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-8.jpg') }}" alt="Rishikesh, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Rishikesh, India</h3>
+                        <p class="destination-location">Uttarakhand</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$3.2k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">7 Days Trip</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 9 -->
+                <div class="destination-card" data-category="city">
+                    <div class="destination-image">
+                        <img src="{{ url_for('static', filename='images/destination-9.jpg') }}" alt="Jaipur, India">
+                    </div>
+                    <div class="destination-info">
+                        <h3 class="destination-title">Jaipur, India</h3>
+                        <p class="destination-location">Rajasthan</p>
+                        <div class="destination-meta">
+                            <span class="destination-price">$4.8k</span>
+                            <div class="destination-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <p class="trip-duration">9 Days Trip</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more">
+                <button class="btn btn-outline">Load More</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>traveLLex</h3>
+                    <p>Book your trip in minute, get full Control for much longer</p>
+                    <a href="/plan-trip">Plan Your Next Trip</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Mobile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Help/FAQ</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Affiliate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-app">
+                    <h4>Discover our app</h4>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <i class="fab fa-apple"></i>
+                            <div>
+                                <span>Download on the</span>
+                                <p>App Store</p>
+                            </div>
+                        </a>
+                        <a href="#" class="app-button">
+                            <i class="fab fa-google-play"></i>
+                            <div>
+                                <span>GET IT ON</span>
+                                <p>Google Play</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 traveLLex. All rights reserved</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content">
+            <div class="modal-left" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ url_for('static', filename='images/login-bg.jpg') }});">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your account and continue your travel planning</p>
+            </div>
+            <div class="modal-right">
+                <form id="login-form" class="auth-form" onsubmit="return validateForm('login-form')">
+                    <h3>Login</h3>
+                    
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" placeholder="Email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="login-password" name="password" placeholder="Password" required>
+                            <div class="password-toggle">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Login</button>
+                    
+                    <div class="divider">
+                        <span>or sign in with</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-auth-btn">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="social-auth-btn">
+                            <i class="fab fa-apple"></i>
+                            <span>Apple</span>
+                        </button>
+                    </div>
+                    
+                    <div class="switch-auth">
+                        Don't have an account? <a href="#" id="switch-to-signup">Sign up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-close">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal-content">
+            <div class="modal-left" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ url_for('static', filename='images/register-bg.jpg') }});">
+                <h2>Create your Account</h2>
+                <p>Join traveLLex to plan and book your perfect trip experience</p>
+            </div>
+            <div class="modal-right">
+                <form id="signup-form" class="auth-form" onsubmit="return validateForm('signup-form')">
+                    <h3>Sign Up</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first_name" placeholder="First Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last_name" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="email" placeholder="Email address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="signup-password" name="password" placeholder="Password" required>
+                            <div class="password-toggle">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 5px;">
+                            Password must have at least 8 characters, 1 uppercase letter, 1 lowercase letter, and 1 number
+                        </p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">Accept Terms & Conditions</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Join Us →</button>
+                    
+                    <div class="divider">
+                        <span>or sign up with</span>
+                    </div>
+                    
+                    <div class="social-auth">
+                        <button type="button" class="social-auth-btn">
+                            <i class="fab fa-google"></i>
+                            <span>Google</span>
+                        </button>
+                        <button type="button" class="social-auth-btn">
+                            <i class="fab fa-apple"></i>
+                            <span>Apple</span>
+                        </button>
+                    </div>
+                    
+                    <div class="switch-auth">
+                        Have an account? <a href="#" id="switch-to-login">Log in</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Destination filtering by category
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.destination-category');
+            const destinationCards = document.querySelectorAll('.destination-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show/hide destinations based on category
+                    destinationCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Filter functionality
+            const searchInput = document.getElementById('search');
+            const countrySelect = document.getElementById('country');
+            const budgetSelect = document.getElementById('budget');
+            const durationSelect = document.getElementById('duration');
+            
+            function filterDestinations() {
+                const searchValue = searchInput.value.toLowerCase();
+                const countryValue = countrySelect.value.toLowerCase();
+                
+                destinationCards.forEach(card => {
+                    const title = card.querySelector('.destination-title').textContent.toLowerCase();
+                    const location = card.querySelector('.destination-location').textContent.toLowerCase();
+                    
+                    let showCard = true;
+                    
+                    // Search filter
+                    if (searchValue && !title.includes(searchValue) && !location.includes(searchValue)) {
+                        showCard = false;
+                    }
+                    
+                    // Country filter
+                    if (countryValue && !location.includes(countryValue) && !title.includes(countryValue)) {
+                        showCard = false;
+                    }
+                    
+                    // Only apply the category filter if a category is selected (not 'all')
+                    const activeCategory = document.querySelector('.destination-category.active').getAttribute('data-category');
+                    if (activeCategory !== 'all' && card.getAttribute('data-category') !== activeCategory) {
+                        showCard = false;
+                    }
+                    
+                    card.style.display = showCard ? 'block' : 'none';
+                });
+            }
+            
+            searchInput.addEventListener('input', filterDestinations);
+            countrySelect.addEventListener('change', filterDestinations);
+            budgetSelect.addEventListener('change', filterDestinations);
+            durationSelect.addEventListener('change', filterDestinations);
+        });
+    </script>
+</body>
+</html> 
