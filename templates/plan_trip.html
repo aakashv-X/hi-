@@ -212,11 +212,11 @@
                             
                             <div class="form-group">
                                 <label for="budget">Budget (per person)</label>
-                                <input type="range" id="budget" name="budget" min="500" max="10000" step="100" value="2000" data-output="budget-value" oninput="updateRangeValue(this)">
+                                <input type="range" id="budget" name="budget" min="10000" max="200000" step="1000" value="25000" data-output="budget-value" oninput="updateRangeValue(this)">
                                 <div class="range-values">
-                                    <span>₹500</span>
-                                    <span id="budget-value">₹2000</span>
                                     <span>₹10000</span>
+                                    <span id="budget-value">₹25000</span>
+                                    <span>₹200000</span>
                                 </div>
                             </div>
                         </div>
@@ -325,5 +325,6 @@
     
     <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/trip_handler.js') }}"></script>
 </body>
-</html> 
+</html>

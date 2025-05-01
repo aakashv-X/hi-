@@ -1,0 +1,126 @@
+[
+    {
+        "train_number": "12618",
+        "train_name": "MNGLA LKSDP EXP",
+        "origin_station": "NZM",
+        "destination_station": "MAO",
+        "departure_time": "05:35",
+        "arrival_time": "16:00",
+        "classes": [
+            {
+                "class_name": "SL",
+                "fare": "825",
+                "availability": "WL27"
+            },
+            {
+                "class_name": "3E",
+                "fare": "2045",
+                "availability": "WL34"
+            },
+            {
+                "class_name": "3A",
+                "fare": "2150",
+                "availability": "WL35"
+            },
+            {
+                "class_name": "2A",
+                "fare": "3115",
+                "availability": "WL18"
+            }
+        ],
+        "url": "https://www.ixigo.com/search/result/train/DEC/MAO/18052025//1/0/0/0/ALL"
+    },
+    {
+        "train_number": "12432",
+        "train_name": "TVC RAJDHANI",
+        "origin_station": "NZM",
+        "destination_station": "MAO",
+        "departure_time": "06:16",
+        "arrival_time": "07:05",
+        "classes": [
+            {
+                "class_name": "3A",
+                "fare": "3915",
+                "availability": "WL70"
+            },
+            {
+                "class_name": "2A",
+                "fare": "5365",
+                "availability": "WL22"
+            },
+            {
+                "class_name": "1A",
+                "fare": "6705",
+                "availability": "WL4"
+            }
+        ],
+        "url": "https://www.ixigo.com/search/result/train/DEC/MAO/18052025//1/0/0/0/ALL"
+    },
+    {
+        "train_number": "12484",
+        "train_name": "ASR KCVL SF EXP",
+        "origin_station": "NDLS",
+        "destination_station": "MAO",
+        "departure_time": "13:10",
+        "arrival_time": "17:10",
+        "classes": [
+            {
+                "class_name": "SL",
+                "fare": "810",
+                "availability": "WL51"
+            },
+            {
+                "class_name": "2A",
+                "fare": "3045",
+                "availability": "WL28"
+            },
+            {
+                "class_name": "1A",
+                "fare": "5200",
+                "availability": "WL5"
+            },
+            {
+                "class_name": "3A",
+                "fare": "2105",
+                "availability": " Regret"
+            }
+        ],
+        "url": "https://www.ixigo.com/search/result/train/DEC/MAO/18052025//1/0/0/0/ALL"
+    },
+    {
+        "train_number": "12780",
+        "train_name": "GOA EXPRESS",
+        "origin_station": "NZM",
+        "destination_station": "MAO",
+        "departure_time": "15:15",
+        "arrival_time": "05:40",
+        "classes": [
+            {
+                "class_name": "SL",
+                "fare": "820",
+                "availability": "WL68"
+            },
+            {
+                "class_name": "3E",
+                "fare": "2025",
+                "availability": "WL48"
+            },
+            {
+                "class_name": "3A",
+                "fare": "2130",
+                "availability": " WL 78"
+            },
+            {
+                "class_name": "2A",
+                "fare": "3080",
+                "availability": " WL 29"
+            },
+            {
+                "class_name": "1A",
+                "fare": "5260",
+                "availability": "WL3"
+            }
+        ],
+        "url": "https://www.ixigo.com/search/result/train/DEC/MAO/18052025//1/0/0/0/ALL"
+    }
+]

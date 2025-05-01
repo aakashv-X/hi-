@@ -112,7 +112,7 @@ function updateRangeValue(slider) {
     const output = document.getElementById(slider.dataset.output);
     
     if (output) {
-        output.textContent = '$' + value;
+        output.textContent = '₹' + value;
     }
 }
 

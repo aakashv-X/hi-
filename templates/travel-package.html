@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>traveLLex - Travel Options</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #6b8caa;
+      --primary-light: #8aabc8;
+      --primary-dark: #3a5777;
+      --primary-softest: rgba(107, 140, 170, 0.15);
+      --primary-soft: rgba(107, 140, 170, 0.3);
+      --text-color: #4a5568;
+      --text-light: #718096;
+      --text-medium: #64748b;
+      --bg-color: #ffffff;
+      --bg-light: #f8fafc;
+      --border-color: #e9ecef;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #ebeef2;
+      --gray-300: #dce1e8;
+      --gray-400: #cbd3df;
+      --success-color: #68d391;
+      --warning-color: #f6ad55;
+      --border-radius-sm: 6px;
+      --border-radius-md: 8px;
+      --border-radius-lg: 12px;
+      --box-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03);
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+      --box-shadow-md: 0 8px 25px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s ease;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(200, 220, 240, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(200, 220, 240, 0.1) 0%, transparent 20%);
+      background-attachment: fixed;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    header {
+      position: relative;
+      padding: 80px 0 60px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(22, 54, 85, 0.85) 0%, rgba(107, 140, 170, 0.75) 100%);
+      margin-bottom: 40px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url("../static/images/plan-trip-bg.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.5);
+      z-index: -1;
+    }
+    h1, h2, h3 { font-weight: 600; letter-spacing: -0.02em; color: var(--text-color);}
+    header h1, header h2 { color: white; }
+    h1 { font-size: 2.5rem; margin-bottom: 0.8rem; }
+    h2 { font-size: 1.8rem; margin: 3rem 0 1.5rem; color: var(--primary-dark);}
+    .section { margin-bottom: 3.5rem; }
+    .package-cards { display: flex; flex-direction: column; gap: 2rem; }
+    .card {
+      display: flex; flex-direction: column;
+      background: var(--bg-color);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      border: 1px solid var(--border-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--box-shadow-md);}
+    .card-header {
+      background-color: var(--bg-color);
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .card-body {
+      display: flex; flex-direction: column; padding: 1.5rem; gap: 1.5rem; background-color: var(--bg-light);
+      position: relative;
+    }
+    .badge {
+      display: inline-flex; align-items: center; padding: 0.35rem 0.7rem;
+      border-radius: 40px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.01em;
+    }
+    .package-type { background: var(--primary-softest); color: var(--primary-dark);}
+    .package-tag { background: var(--primary-softest); color: var(--primary-dark);}
+    .badge i { margin-right: 0.4rem; font-size: 0.8rem;}
+    .transport-icon {
+      width: 40px; height: 40px; background: var(--primary-softest); border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center; margin-right: 0.8rem;
+      color: var(--primary-dark); font-size: 1rem; box-shadow: var(--box-shadow-sm);
+    }
+    .transport-name { font-weight: 600; font-size: 1rem; display: flex; align-items: center; color: var(--text-color);}
+    .route {
+      display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;
+      font-weight: 500; font-size: 1rem; padding: 1rem; background: var(--bg-color);
+      border-radius: var(--border-radius-md); color: var(--text-medium); box-shadow: var(--box-shadow-sm);
+    }
+    .route i { margin: 0 1.2rem; color: var(--primary-dark);}
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .info-item {
+      margin-bottom: 0.8rem; background-color: var(--bg-color); padding: 15px;
+      border-radius: var(--border-radius-md); box-shadow: var(--box-shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-label { color: var(--text-light); font-size: 0.75rem; margin-bottom: 0.3rem; text-transform: uppercase; font-weight: 500; letter-spacing: 0.03em; display: flex; align-items: center;}
+    .info-label i { margin-right: 0.4rem; color: var(--primary-dark); font-size: 0.8rem;}
+    .info-value { font-weight: 600; font-size: 0.95rem; color: var(--text-color);}
+    .price-row {
+      display: flex; flex-wrap: wrap; justify-content: space-between; margin-bottom: 1.5rem; gap: 1rem;
+    }
+    .original-price { text-decoration: line-through; color: var(--text-light);}
+    .tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.5rem;}
+    .tag {
+      background: var(--bg-color); color: var(--text-medium); padding: 0.4rem 0.8rem;
+      border-radius: 40px; font-size: 0.8rem; display: inline-flex; align-items: center;
+      box-shadow: var(--box-shadow-sm); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .tag i { margin-right: 0.4rem; color: var(--primary-dark);}
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 50px; font-weight: 500;
+      margin-top: 0.8rem; border: none; cursor: pointer; box-shadow: var(--box-shadow-sm);
+      transition: var(--transition); font-size: 0.9rem; min-width: 140px;
+    }
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+      color: white; box-shadow: 0 4px 10px rgba(58, 87, 119, 0.2);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(to right, var(--primary-dark), var(--primary-dark));
+      box-shadow: 0 6px 15px rgba(58, 87, 119, 0.3);
+    }
+    .card-footer {
+      background: var(--bg-color); padding: 1.5rem; border-top: 1px solid var(--border-color);
+      position: relative; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center;
+    }
+    .status-badge {
+      display: inline-flex; align-items: center; padding: 0.2rem 0.6rem; border-radius: 40px;
+      font-size: 0.7rem; font-weight: 500;
+    }
+    .status-available { background-color: rgba(104, 211, 145, 0.1); color: var(--success-color);}
+    .status-waiting { background-color: rgba(246, 173, 85, 0.1); color: var(--warning-color);}
+    .discount-badge {
+      background-color: var(--primary-softest); color: var(--primary-dark);
+      padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin-left: 0.5rem;
+    }
+    .back-to-home {
+      position: fixed; top: 30px; left: 30px; background-color: rgba(255, 255, 255, 0.9);
+      color: var(--primary-color); padding: 12px 20px; border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); display: flex; align-items: center; font-weight: 600;
+      transition: all 0.3s; z-index: 100; text-decoration: none;
+    }
+    .back-to-home i { margin-right: 8px;}
+    .back-to-home:hover {
+      background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+      color: white; transform: translateY(-3px);
+    }
+    /* Navigation tabs */
+    .nav-tabs {
+      display: flex; margin-bottom: 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; gap: 1rem; border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem; padding-top: 0.5rem;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tab {
+      padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--text-medium); font-weight: 500;
+      white-space: nowrap; display: inline-flex; align-items: center; text-decoration: none;
+      transition: all 0.2s; font-size: 0.9rem; box-shadow: var(--box-shadow-sm); background-color: var(--bg-color);
+    }
+    .nav-tab.active {
+      color: white; background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+      font-weight: 500; transform: translateY(-3px); box-shadow: 0 4px 12px rgba(58, 87, 119, 0.2);
+    }
+    .nav-tab:hover { transform: translateY(-3px);}
+    @media (max-width: 768px) {
+      .info-grid { grid-template-columns: 1fr 1fr;}
+      h1 { font-size: 2rem;}
+      h2 { font-size: 1.5rem;}
+      .card-footer { flex-direction: column;}
+      .card-footer .tags { margin-bottom: 1rem; width: 100%;}
+      .book-now { width: 100%; text-align: center;}
+      .nav-tab { padding: 0.6rem 1.2rem; font-size: 0.85rem;}
+    }
+    @media (max-width: 576px) {
+      .info-grid { grid-template-columns: 1fr;}
+      .card-header, .card-body, .card-footer { padding: 1.2rem;}
+      .container { padding: 1rem;}
+      h1 { font-size: 1.7rem;}
+      h2 { font-size: 1.3rem;}
+    }
+  </style>
+</head>
+<body>
+  <div id="resultSection">
+    <!-- Back to Home Button -->
+    <a href="/" class="back-to-home">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+    <header>
+      <div class="container">
+        <h1><span>traveLLex</span></h1>
+        {% if search_params %}
+        <div class="search-summary">
+          <p>
+            {{ search_params.from_city }} → {{ search_params.to_city }} | 
+            {{ search_params.from_date }} - {{ search_params.to_date }} |
+            {{ search_params.num_adults }} Adults{% if search_params.num_children > 0 %}, {{ search_params.num_children }} Children{% endif %} |
+            Budget: ₹{{ "%.2f"|format(search_params.budget) }}
+          </p>
+        </div>
+        {% endif %}
+      </div>
+    </header>
+    <main class="container">
+      <!-- Navigation tabs -->
+      <div class="nav-tabs">
+        <a href="#trainPackages" class="nav-tab active"><i class="fas fa-train"></i> Trains</a>
+        <a href="#flightPackages" class="nav-tab"><i class="fas fa-plane"></i> Flights</a>
+      </div>
+      <!-- Train Packages Section -->
+      <section class="section" id="trainPackages">
+        <h2>Train <span>Options</span></h2>
+        <div class="package-cards">
+          {% for package in packages.train_packages %}
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="badge package-type"><i class="fas fa-train"></i> Train</span>
+              </div>
+              <div class="transport-name">
+                <div class="transport-icon">
+                  <i class="fas fa-train"></i>
+                </div>
+                {{ package.transportation.train_name }} ({{ package.transportation.train_number }})
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="transport-details" style="width: 100%;">
+                <div class="route">
+                  {{ package.transportation.origin_station }} <i class="fas fa-arrow-right"></i> {{ package.transportation.destination_station }}
+                </div>
+                <div class="info-grid">
+                  <div class="info-item">
+                    <div class="info-label"><i class="far fa-clock"></i> Departure</div>
+                    <div class="info-value">{{ package.transportation.departure_time }}</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label"><i class="far fa-clock"></i> Arrival</div>
+                    <div class="info-value">{{ package.transportation.arrival_time }}</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label"><i class="fas fa-couch"></i> Class</div>
+                    <div class="info-value">{{ package.transportation.class_name }}</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label"><i class="fas fa-ticket-alt"></i> Availability</div>
+                    <div class="info-value">
+                      <span class="status-badge {% if 'WL' in package.transportation.availability %}status-waiting{% else %}status-available{% endif %}">
+                        {{ package.transportation.availability }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="price-row">
+                  <div>
+                    <div class="info-label"><i class="fas fa-rupee-sign"></i> Total Transportation Cost</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.total_transportation_cost) }}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-users"></i> Travellers</div>
+                    <div class="info-value">{{ package.num_adults }} Adults{% if package.num_children > 0 %}, {{ package.num_children }} Children{% endif %}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-calendar"></i> Days</div>
+                    <div class="info-value">{{ package.num_days }}</div>
+                  </div>
+                </div>
+                <div class="info-grid">
+                  <div class="info-item" style="grid-column: span 2;">
+                    <div class="info-label"><i class="fas fa-bed"></i> Hotel</div>
+                    <div class="info-value">
+                      <a href="{{ package.hotel.link }}" target="_blank">
+                        {{ package.hotel.name }}
+                      </a>
+                      <div style="font-size: 0.85em; color: var(--text-light);">
+                        {{ package.hotel.location }}
+                      </div>
+                      <div style="font-size: 0.85em; color: var(--text-light);">
+                        {{ package.hotel.price }}/night, {{ package.hotel.taxes }}
+                      </div>
+                      {% if package.hotel.original_price %}
+                      <div style="font-size: 0.85em; color: var(--text-light);">
+                        Original: {{ package.hotel.original_price }}
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <div class="tags">
+                  {% for offering in package.hotel.offering %}
+                  <span class="tag"><i class="far fa-check-circle"></i>{{ offering }}</span>
+                  {% endfor %}
+                </div>
+                <div class="price-row">
+                  <div>
+                    <div class="info-label"><i class="fas fa-rupee-sign"></i> Total Hotel Cost</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.total_hotel_cost) }}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-utensils"></i> Meals & Activities</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.estimated_activities_meals_cost) }}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-wallet"></i> Total Estimated Cost</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.total_estimated_cost) }}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-bullseye"></i> Budget</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.budget) }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary book-now"><i class="fas fa-ticket-alt"></i> Book This Package</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      <!-- Flight Packages Section -->
+      <section class="section" id="flightPackages">
+        <h2>Flight <span>Options</span></h2>
+        <div class="package-cards">
+          {% for package in packages.flight_packages %}
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <span class="badge package-type"><i class="fas fa-plane"></i> Flight</span>
+              </div>
+              <div class="transport-name">
+                <div class="transport-icon">
+                  <i class="fas fa-plane"></i>
+                </div>
+                {{ package.transportation.airline }}
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="transport-details" style="width: 100%;">
+                <div class="route">
+                  {{ package.transportation.from_airport }} <i class="fas fa-arrow-right"></i> {{ package.transportation.to_airport }}
+                </div>
+                <div class="info-grid">
+                  <div class="info-item">
+                    <div class="info-label"><i class="far fa-clock"></i> Departure</div>
+                    <div class="info-value">{{ package.transportation.departure_time }}</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label"><i class="far fa-clock"></i> Arrival</div>
+                    <div class="info-value">{{ package.transportation.arrival_time }}</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label"><i class="fas fa-plane"></i> Flight Duration</div>
+                    <div class="info-value">{{ package.transportation.duration }}</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label"><i class="fas fa-ticket-alt"></i> Class</div>
+                    <div class="info-value">{% if package.transportation.class_type %}
+                                            {{package.transportation.class_type}}
+                                            {% else %}
+                                            Economic
+                                            {% endif %}
+                                          </div>
+                  </div>
+                </div>
+                <div class="price-row">
+                  <div>
+                    <div class="info-label"><i class="fas fa-rupee-sign"></i> Total Transportation Cost</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.total_transportation_cost) }}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-users"></i> Travellers</div>
+                    <div class="info-value">{{ package.num_adults }} Adults{% if package.num_children > 0 %}, {{ package.num_children }} Children{% endif %}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-calendar"></i> Days</div>
+                    <div class="info-value">{{ package.num_days }}</div>
+                  </div>
+                </div>
+                <div class="info-grid">
+                  <div class="info-item" style="grid-column: span 2;">
+                    <div class="info-label"><i class="fas fa-bed"></i> Hotel</div>
+                    <div class="info-value">
+                      <a href="{{ package.hotel.link }}" target="_blank">
+                        {{ package.hotel.name }}
+                      </a>
+                      <div style="font-size: 0.85em; color: var(--text-light);">
+                        {{ package.hotel.location }}
+                      </div>
+                      <div style="font-size: 0.85em; color: var(--text-light);">
+                        {{ package.hotel.price }}/night, {{ package.hotel.taxes }}
+                      </div>
+                      {% if package.hotel.original_price %}
+                      <div style="font-size: 0.85em; color: var(--text-light);">
+                        Original: {{ package.hotel.original_price }}
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+                <div class="tags">
+                  {% for offering in package.hotel.offering %}
+                  <span class="tag"><i class="far fa-check-circle"></i>{{ offering }}</span>
+                  {% endfor %}
+                </div>
+                <div class="price-row">
+                  <div>
+                    <div class="info-label"><i class="fas fa-rupee-sign"></i> Total Hotel Cost</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.total_hotel_cost) }}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-utensils"></i> Meals & Activities</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.estimated_activities_meals_cost) }}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-wallet"></i> Total Estimated Cost</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.total_estimated_cost) }}</div>
+                  </div>
+                  <div>
+                    <div class="info-label"><i class="fas fa-bullseye"></i> Budget</div>
+                    <div class="info-value">₹{{ "%.2f"|format(package.budget) }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="btn btn-primary book-now"><i class="fas fa-ticket-alt"></i> Book This Flight</a>
+            </div>
+          </div>
+          {% endfor %}
+          {% if not packages.flight_packages %}
+          <div style="text-align: center; width: 100%; padding: 2rem;">
+            <p>No flight packages available for your selected criteria.</p>
+          </div>
+          {% endif %}
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.nav-tab');
+      const sections = document.querySelectorAll('.section');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+          e.preventDefault();
+          tabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          sections.forEach(section => {
+            section.style.display = 'none';
+          });
+          const targetId = this.getAttribute('href').substring(1);
+          document.getElementById(targetId).style.display = 'block';
+        });
+      });
+      // Initialize - show only the first section
+      sections.forEach((section, index) => {
+        if (index !== 0) {
+          section.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
