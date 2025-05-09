@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>No Trips</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle fill="#F5F5F5" cx="100" cy="100" r="100"></circle>
+        <g transform="translate(50.000000, 45.000000)">
+            <rect fill="#8AABC8" x="0" y="60" width="100" height="50" rx="8"></rect>
+            <rect fill="#FFFFFF" x="10" y="70" width="50" height="10" rx="2"></rect>
+            <rect fill="#FFFFFF" x="10" y="85" width="80" height="6" rx="2"></rect>
+            <rect fill="#FFFFFF" x="10" y="95" width="60" height="6" rx="2"></rect>
+            <rect fill="#A8C1D9" x="20" y="0" width="60" height="40" rx="4"></rect>
+            <rect fill="#6B8CAA" x="30" y="10" width="40" height="20" rx="2"></rect>
+            <path d="M20,35 L80,35 L80,50 C80,55.5228475 75.5228475,60 70,60 L30,60 C24.4771525,60 20,55.5228475 20,50 L20,35 Z" fill="#25A5C4"></path>
+            <rect fill="#FFFFFF" x="45" y="45" width="10" height="10" rx="5"></rect>
+            <path d="M100,90 L100,90 L90,80 L90,50 C90,47.2385763 92.2385763,45 95,45 C97.7614237,45 100,47.2385763 100,50 L100,90 Z" fill="#4DBDD9"></path>
+        </g>
+    </g>
+</svg> 

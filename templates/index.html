@@ -22,6 +22,20 @@
         </div>
     </div>
     
+    <!-- Flash Messages Container -->
+    <div class="flash-messages-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {% if category == 'error' %}error{% elif category == 'success' %}success{% else %}info{% endif %}">
+                        <span>{{ message }}</span>
+                        <button type="button" class="close-flash"><i class="fas fa-times"></i></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    
     <!-- Header -->
     <header id="main-header">
         <div class="container">
@@ -40,8 +54,13 @@
                 </nav> -->
                 
                 <div class="auth-buttons">
-                    <a href="/login" class="btn btn-outline">Login</a>
-                    <a href="/register" class="btn btn-primary">Sign Up</a>
+                    {% if current_user.is_authenticated %}
+                        <a href="#" class="btn btn-outline profile-link">My Profile</a>
+                        <a href="/logout" class="btn btn-primary">Logout</a>
+                    {% else %}
+                        <a href="#" class="btn btn-outline" id="login-btn">Login</a>
+                        <a href="#" class="btn btn-primary" id="signup-btn">Sign Up</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -52,7 +71,7 @@
         <div class="container">
             <div class="hero-content">
                 <p>BEST DESTINATIONS AROUND THE WORLD</p>
-                <h1>Travel Smart Enjoy<br>More Plan<br>Stress-Free</h1>
+                <h1>Travel Smart<br>Enjoy More<br>Plan Stress-Free</h1>
                 <div class="hero-buttons">
                     <a href="/plan-trip" class="btn btn-primary">
                         <i class="fas fa-map-marker-alt"></i>
@@ -268,7 +287,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">
-                            <img src="{{ url_for('static', filename='images/testimonial-1.jpg') }}" alt="Mike Taylor">
+                            <img src="{{ url_for('static', filename='images/testimonial-1.jpeg') }}" alt="Mike Taylor">
                         </div>
                         <div class="testimonial-author">
                             <h4>Mike Taylor</h4>
@@ -289,7 +308,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">
-                            <img src="{{ url_for('static', filename='images/testimonial-2.jpg') }}" alt="Thomas Wagner">
+                            <img src="{{ url_for('static', filename='images/testimonial-2.jpeg') }}" alt="Thomas Wagner">
                         </div>
                         <div class="testimonial-author">
                             <h4>Thomas Wagner</h4>
@@ -310,7 +329,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">
-                            <img src="{{ url_for('static', filename='images/testimonial-3.jpg') }}" alt="Kelly Williams">
+                            <img src="{{ url_for('static', filename='images/testimonial-3.jpeg') }}" alt="Kelly Williams">
                         </div>
                         <div class="testimonial-author">
                             <h4>Kelly Williams</h4>
@@ -485,7 +504,7 @@
                 <p>Sign in to access your account and continue your travel planning</p>
             </div>
             <div class="modal-right">
-                <form id="login-form" class="auth-form" onsubmit="return validateForm('login-form')">
+                <form id="login-form" class="auth-form" action="/login" method="POST">
                     <h3>Login</h3>
                     
                     <div class="form-group">
@@ -524,7 +543,7 @@
                 <p>Join traveLLex to plan and book your perfect trip experience</p>
             </div>
             <div class="modal-right">
-                <form id="signup-form" class="auth-form" onsubmit="return validateForm('signup-form')">
+                <form id="signup-form" class="auth-form" action="/register" method="POST">
                     <h3>Sign Up</h3>
                     
                     <div class="form-group">
@@ -567,6 +586,8 @@
     
     <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Profile JS -->
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

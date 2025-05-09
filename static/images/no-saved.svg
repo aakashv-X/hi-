@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>No Saved Destinations</title>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle fill="#F5F5F5" cx="100" cy="100" r="100"></circle>
+        <g transform="translate(50.000000, 50.000000)">
+            <rect fill="#8AABC8" x="0" y="0" width="100" height="100" rx="8"></rect>
+            <rect fill="#FFFFFF" opacity="0.9" x="10" y="60" width="80" height="30" rx="4"></rect>
+            <rect fill="#25A5C4" x="15" y="70" width="40" height="6" rx="2"></rect>
+            <rect fill="#4DBDD9" x="15" y="80" width="70" height="4" rx="2"></rect>
+            <path d="M33,38 L67,38 C69.209139,38 71,39.790861 71,42 L71,55 L29,55 L29,42 C29,39.790861 30.790861,38 33,38 Z" fill="#FFFFFF" opacity="0.7"></path>
+            <path d="M50,15 L67.7128129,33 L32.2871871,33 L50,15 Z" fill="#FFFFFF" opacity="0.9"></path>
+            <path d="M85,25 C88.8659932,25 92,28.1340068 92,32 C92,35.8659932 88.8659932,39 85,39 C81.1340068,39 78,35.8659932 78,32 C78,28.1340068 81.1340068,25 85,25 Z" fill="#FFFFFF" opacity="0.2" stroke="#FFFFFF" stroke-width="2"></path>
+            <path d="M85,25 L85,25 L85.8660254,32.5 L78.5,29.5 L91.5,29.5 L84.1339746,32.5 Z" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg> 

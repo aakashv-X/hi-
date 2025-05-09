@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - traveLLex</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <div style="margin-top: 20px; font-weight: 500;">Loading traveLLex...</div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header id="main-header" class="scrolled">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">traveLLex</a>
+                
+                <div class="auth-buttons">
+                    <a href="/logout" class="btn btn-outline">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Profile Dashboard Section -->
+    <section class="profile-dashboard">
+        <div class="container">
+            <div class="dashboard-container">
+                <!-- Sidebar -->
+                <div class="dashboard-sidebar">
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="{{ url_for('static', filename='images/default-avatar.jpg') }}" alt="User Avatar">
+                        </div>
+                        <h3>{{ user.name }}</h3>
+                        <p>{{ user.email }}</p>
+                        <div class="membership-badge">
+                            <span>Premium Member</span>
+                        </div>
+                    </div>
+                    
+                    <ul class="dashboard-nav">
+                        <li class="active">
+                            <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                        </li>
+                        <li>
+                            <a href="#trips"><i class="fas fa-suitcase"></i> My Trips</a>
+                        </li>
+                        <li>
+                            <a href="#saved"><i class="fas fa-heart"></i> Saved Destinations</a>
+                        </li>
+                        <li>
+                            <a href="#settings"><i class="fas fa-cog"></i> Account Settings</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="dashboard-content">
+                    <div class="dashboard-section active" id="profile">
+                        <div class="section-header">
+                            <h2>My Profile</h2>
+                            <button class="btn btn-outline edit-profile-btn"><i class="fas fa-pencil-alt"></i> Edit Profile</button>
+                        </div>
+                        
+                        <div class="profile-details">
+                            <div class="profile-info-card">
+                                <h3>Personal Information</h3>
+                                <div class="info-group">
+                                    <label>Full Name</label>
+                                    <p>{{ user.name }}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Email Address</label>
+                                    <p>{{ user.email }}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Phone Number</label>
+                                    <p>{{ user.phone if user.phone else 'Not provided' }}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Date of Birth</label>
+                                    <p>{{ user.dob if user.dob else 'Not provided' }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-info-card">
+                                <h3>Address Information</h3>
+                                <div class="info-group">
+                                    <label>Street Address</label>
+                                    <p>{{ user.address if user.address else 'Not provided' }}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>City</label>
+                                    <p>{{ user.city if user.city else 'Not provided' }}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>State</label>
+                                    <p>{{ user.state if user.state else 'Not provided' }}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Zip Code</label>
+                                    <p>{{ user.zip if user.zip else 'Not provided' }}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-info-card">
+                                <h3>Account Information</h3>
+                                <div class="info-group">
+                                    <label>Member Since</label>
+                                    <p>{{ user.created_at.strftime('%d %B, %Y') if user.created_at else 'N/A' }}</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Membership Type</label>
+                                    <p class="highlight">Premium</p>
+                                </div>
+                                <div class="info-group">
+                                    <label>Trips Booked</label>
+                                    <p>{{ user.trips|length if user.trips else '0' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-section" id="trips">
+                        <div class="section-header">
+                            <h2>My Trips</h2>
+                            <a href="/plan-trip" class="btn btn-primary"><i class="fas fa-plus"></i> Plan New Trip</a>
+                        </div>
+                        
+                        <div class="trips-container">
+                            {% if user.trips and user.trips|length > 0 %}
+                                {% for trip in user.trips %}
+                                <div class="trip-card">
+                                    <div class="trip-image">
+                                        <img src="{{ url_for('static', filename='images/destination-' ~ loop.index ~ '.jpg') }}" alt="{{ trip.destination }}">
+                                        <div class="trip-status {{ trip.status|lower }}">{{ trip.status }}</div>
+                                    </div>
+                                    <div class="trip-details">
+                                        <h3>{{ trip.destination }}</h3>
+                                        <div class="trip-meta">
+                                            <span><i class="fas fa-calendar-alt"></i> {{ trip.start_date }} - {{ trip.end_date }}</span>
+                                            <span><i class="fas fa-user"></i> {{ trip.travelers }} travelers</span>
+                                        </div>
+                                        <div class="trip-actions">
+                                            <a href="#" class="btn btn-sm btn-outline">View Details</a>
+                                            <a href="#" class="btn btn-sm btn-primary">Get Itinerary</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="no-data">
+                                    <img src="{{ url_for('static', filename='images/no-trips.svg') }}" alt="No trips">
+                                    <p>You haven't booked any trips yet.</p>
+                                    <a href="/plan-trip" class="btn btn-primary">Plan Your First Trip</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-section" id="saved">
+                        <div class="section-header">
+                            <h2>Saved Destinations</h2>
+                        </div>
+                        
+                        <div class="saved-destinations">
+                            {% if user.saved_destinations and user.saved_destinations|length > 0 %}
+                                <div class="destinations-grid">
+                                    {% for destination in user.saved_destinations %}
+                                    <div class="destination-card">
+                                        <div class="destination-image">
+                                            <img src="{{ url_for('static', filename='images/destination-' ~ loop.index ~ '.jpg') }}" alt="{{ destination.name }}">
+                                            <button class="remove-saved"><i class="fas fa-heart"></i></button>
+                                        </div>
+                                        <div class="destination-info">
+                                            <h3 class="destination-title">{{ destination.name }}</h3>
+                                            <p class="destination-location">{{ destination.location }}</p>
+                                            <div class="destination-meta">
+                                                <span class="destination-price">{{ destination.price }}</span>
+                                                <div class="destination-rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <span>{{ destination.rating }}</span>
+                                                </div>
+                                            </div>
+                                            <a href="/destinations/{{ destination.id }}" class="btn btn-sm btn-primary">Explore</a>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="no-data">
+                                    <img src="{{ url_for('static', filename='images/no-saved.svg') }}" alt="No saved destinations">
+                                    <p>You haven't saved any destinations yet.</p>
+                                    <a href="/destinations" class="btn btn-primary">Explore Destinations</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-section" id="settings">
+                        <div class="section-header">
+                            <h2>Account Settings</h2>
+                        </div>
+                        
+                        <div class="settings-container">
+                            <div class="profile-info-card">
+                                <h3>Update Password</h3>
+                                <form action="/update-password" method="POST" class="settings-form">
+                                    <div class="form-group">
+                                        <label for="current-password">Current Password</label>
+                                        <input type="password" id="current-password" name="current_password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="new-password">New Password</label>
+                                        <input type="password" id="new-password" name="new_password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirm-password">Confirm New Password</label>
+                                        <input type="password" id="confirm-password" name="confirm_password" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Update Password</button>
+                                </form>
+                            </div>
+                            
+                            <div class="profile-info-card">
+                                <h3>Email Preferences</h3>
+                                <form action="/update-preferences" method="POST" class="settings-form">
+                                    <div class="form-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                            <label for="newsletter">Receive newsletter and travel tips</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="deals" name="deals" checked>
+                                            <label for="deals">Receive special offers and deals</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox-item">
+                                            <input type="checkbox" id="trip-updates" name="trip_updates" checked>
+                                            <label for="trip-updates">Receive trip updates and reminders</label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Preferences</button>
+                                </form>
+                            </div>
+                            
+                            <div class="danger-zone">
+                                <h3>Danger Zone</h3>
+                                <p>Once you delete your account, there is no going back. Please be certain.</p>
+                                <button class="btn btn-danger" id="delete-account-btn">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>traveLLex</h3>
+                    <p>Book your trip in minute, get full Control for much longer</p>
+                    <a href="/plan-trip">Plan Your Next Trip</a>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Mobile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Help/FAQ</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Affiliate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-app">
+                    <h4>Discover our app</h4>
+                    <div class="app-buttons">
+                        <a href="#" class="app-button">
+                            <i class="fab fa-apple"></i>
+                            <div>
+                                <span>Download on the</span>
+                                <p>App Store</p>
+                            </div>
+                        </a>
+                        <a href="#" class="app-button">
+                            <i class="fab fa-google-play"></i>
+                            <div>
+                                <span>GET IT ON</span>
+                                <p>Google Play</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 traveLLex. All rights reserved</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+        
+        // Page loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 800);
+        });
+    </script>
+</body>
+</html> 

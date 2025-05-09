@@ -72,6 +72,15 @@
             text-align: center;
         }
         
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         @media (max-width: 992px) {
             .register-container {
                 width: 90%;
@@ -100,25 +109,22 @@
                 <a href="/">traveLLex</a>
             </div>
             
-            {% if error %}
-            <div class="error-message">
-                {{ error }}
-            </div>
-            {% endif %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="{% if category == 'error' %}error-message{% else %}success-message{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             
-            <form id="signup-form" class="auth-form" onsubmit="return validateForm('signup-form')">
+            <form id="signup-form" class="auth-form" action="/register" method="POST">
                 <h3>Sign Up</h3>
                 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="first-name">First Name</label>
-                        <input type="text" id="first-name" name="first_name" placeholder="First Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="last-name">Last Name</label>
-                        <input type="text" id="last-name" name="last_name" placeholder="Last Name" required>
-                    </div>
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full_name" placeholder="Full Name" required>
                 </div>
                 
                 <div class="form-group">

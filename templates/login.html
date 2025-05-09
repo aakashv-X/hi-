@@ -72,6 +72,15 @@
             text-align: center;
         }
         
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         @media (max-width: 992px) {
             .login-container {
                 width: 90%;
@@ -106,7 +115,17 @@
             </div>
             {% endif %}
             
-            <form id="login-form" class="auth-form" onsubmit="return validateForm('login-form')">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="{% if category == 'error' %}error-message{% else %}success-message{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <form id="login-form" class="auth-form" action="/login" method="POST">
                 <h3>Login</h3>
                 
                 <div class="form-group">
