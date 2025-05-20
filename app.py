@@ -30,7 +30,7 @@ if not os.path.exists(DATA_DIR):
 
 # Create database tables
 with app.app_context():
-    db.create_all()
+    db.create_all() 
     # Create admin user if it doesn't exist
     if not User.query.filter_by(email='aakashv065@gmail.com').first():
         admin = User(
@@ -98,6 +98,7 @@ def register():
     return redirect(url_for('home'))
 
 @app.route('/plan-trip')
+@login_required
 def plan_trip():
     return render_template('plan_trip.html')
 
@@ -217,8 +218,10 @@ def generate_trip():
         to_city = data.get('destination')
         from_date = data.get('start_date')
         to_date = data.get('end_date')
-        num_adults = int(data.get('travelers', 1))
-        num_children = 0  # Default to 0 children since it's not in the form
+        num_adults = int(data.get('adults', 1))
+        num_children = int(data.get('children', 0))
+        num_infants = int(data.get('infants', 0))
+        total_travelers = num_adults + num_children + num_infants
         budget = float(data.get('budget', 25000))
         
         # Calculate number of days from date range
@@ -245,6 +248,7 @@ def generate_trip():
             to_date=to_date_api,
             num_adults=num_adults,
             num_children=num_children,
+            num_infants=num_infants,
             budget=budget,
             num_days=num_days
         )
@@ -260,6 +264,7 @@ def generate_trip():
                 'to_date': to_date_api,
                 'num_adults': num_adults,
                 'num_children': num_children,
+                'num_infants': num_infants,
                 'budget': budget,
                 'num_days': num_days
             }
@@ -271,7 +276,7 @@ def generate_trip():
                     destination=to_city,
                     start_date=from_date_display,
                     end_date=to_date_display,
-                    travelers=num_adults,
+                    travelers=total_travelers,
                     status='Upcoming'
                 )
                 db.session.add(trip)

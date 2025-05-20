@@ -34,7 +34,7 @@ def get_station_code(city):
     return None
 
 # Main function
-def generate_travel_links(from_city, to_city, from_date, to_date, no_adults, no_childrens):
+def generate_travel_links(from_city, to_city, from_date, to_date, no_adults, no_childrens, no_infants):
     """
     Generates travel links for flights, trains and hotels.
     Returns a dictionary with URLs for each mode of transport.
@@ -58,7 +58,7 @@ def generate_travel_links(from_city, to_city, from_date, to_date, no_adults, no_
         flight_url = (
             f"https://www.ixigo.com/search/result/flight?"
             f"from={from_airport}&to={to_airport}&date={from_date_str}&returnDate={to_date_str}"
-            f"&adults={no_adults}&children={no_childrens}&infants=0&class=e&source=Search+Form&hbs=true"
+            f"&adults={no_adults}&children={no_childrens}&infants={no_infants}&class=e&source=Search+Form&hbs=true"
         )
     
     if from_station and to_station:
@@ -88,7 +88,8 @@ if __name__ == "__main__":
         from_date="27-04-2025",
         to_date="29-04-2025",
         no_adults=2,
-        no_childrens=0
+        no_childrens=0,
+        no_infants=0
     )
 
     print("Flight URL:", links['flight_url'])

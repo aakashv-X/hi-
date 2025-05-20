@@ -341,7 +341,7 @@
               </div>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary book-now"><i class="fas fa-ticket-alt"></i> Book This Package</a>
+              <a href="{{ package.transportation.url }}" target="_blank" class="btn btn-primary book-now"><i class="fas fa-ticket-alt"></i> Book This Train</a>
             </div>
           </div>
           {% endfor %}
@@ -453,7 +453,7 @@
               </div>
             </div>
             <div class="card-footer">
-              <a href="#" class="btn btn-primary book-now"><i class="fas fa-ticket-alt"></i> Book This Flight</a>
+              <a href="{{ package.transportation.url }}" target="_blank" class="btn btn-primary book-now"><i class="fas fa-ticket-alt"></i> Book This Flight</a>
             </div>
           </div>
           {% endfor %}

@@ -139,7 +139,7 @@ def package_creator_thread(budget, num_adults, num_children, num_days):
     if not package_creation_complete.is_set():
         print("Package creation timed out or failed")
 
-def start_scraping(from_city, to_city, from_date, to_date, num_adults, num_children, budget, num_days):
+def start_scraping(from_city, to_city, from_date, to_date, num_adults, num_children, num_infants, budget, num_days):
     """Main function to start all scraping threads"""
     print(f"\nStarting scraping process for {from_city} to {to_city}")
     print(f"Date range: {from_date} to {to_date}")
@@ -155,7 +155,8 @@ def start_scraping(from_city, to_city, from_date, to_date, num_adults, num_child
         from_date=from_date,
         to_date=to_date,
         no_adults=num_adults,
-        no_childrens=num_children
+        no_childrens=num_children,
+        no_infants=num_infants
     )
 
     print("\nGenerated URLs:")
@@ -221,6 +222,7 @@ if __name__ == "__main__":
         to_date="30-06-2025",
         num_adults=2,
         num_children=1,
+        num_infants=0,
         budget=40000,
         num_days=4
     )

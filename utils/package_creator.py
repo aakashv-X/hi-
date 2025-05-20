@@ -86,9 +86,10 @@ def find_affordable_trains(trains_data):
                 pass
     return affordable_trains
 
-def create_packages(transport_type, transport_data, hotels_data, budget, num_adults, num_children, num_days):
+def create_packages(transport_type, transport_data, hotels_data, budget, num_adults, num_children, num_infants, num_days):
     """Creates travel packages for a specific transport type (flight or train)."""
     total_persons = num_adults + num_children
+    total_travelers = num_adults + num_children + num_infants
     packages = []
     
     if not transport_data:
@@ -124,6 +125,8 @@ def create_packages(transport_type, transport_data, hotels_data, budget, num_adu
                         "rooms_needed": rooms_needed,
                         "num_adults": num_adults,
                         "num_children": num_children,
+                        "num_infants": num_infants,
+                        "total_travelers": total_travelers,
                         "num_days": num_days,
                         "total_transportation_cost": transportation_cost * total_persons,
                         "total_hotel_cost": total_hotel_cost_per_night * num_days,
@@ -180,6 +183,8 @@ def create_packages(transport_type, transport_data, hotels_data, budget, num_adu
                         "rooms_needed": rooms_needed,
                         "num_adults": num_adults,
                         "num_children": num_children,
+                        "num_infants": num_infants,
+                        "total_travelers": total_travelers,
                         "num_days": num_days,
                         "total_transportation_cost": transportation_cost * total_persons,
                         "total_hotel_cost": total_hotel_cost_per_night * num_days,
@@ -197,7 +202,7 @@ def create_packages(transport_type, transport_data, hotels_data, budget, num_adu
     return packages
 
 
-def main(flights_data_json, hotels_data_json, trains_data_json, budget, num_adults, num_children, num_days, budget_increase_percentage=DEFAULT_BUDGET_INCREASE):
+def main(flights_data_json, hotels_data_json, trains_data_json, budget, num_adults, num_children, num_infants, num_days, budget_increase_percentage=DEFAULT_BUDGET_INCREASE):
     """
     Orchestrates package creation, handling both flights and trains, and saves the result to a JSON file.
     If no packages are found, tries increasing the budget.
@@ -219,8 +224,8 @@ def main(flights_data_json, hotels_data_json, trains_data_json, budget, num_adul
         print(f"Found {len(affordable_flights)} affordable flights and {len(affordable_trains)} affordable trains")
         
         print("Creating packages...")
-        flight_packages = create_packages("flight", affordable_flights, hotels_data, budget, num_adults, num_children, num_days)
-        train_packages = create_packages("train", affordable_trains, hotels_data, budget, num_adults, num_children, num_days)
+        flight_packages = create_packages("flight", affordable_flights, hotels_data, budget, num_adults, num_children, num_infants, num_days)
+        train_packages = create_packages("train", affordable_trains, hotels_data, budget, num_adults, num_children, num_infants, num_days)
 
         all_packages = {
             "flight_packages": flight_packages,
@@ -233,8 +238,8 @@ def main(flights_data_json, hotels_data_json, trains_data_json, budget, num_adul
             affordable_flights = find_affordable_flights(flights_data, increased_budget, num_adults, num_children, num_days) if flights_data else []
             affordable_trains = find_affordable_trains(trains_data) if trains_data else []
 
-            flight_packages = create_packages("flight", affordable_flights, hotels_data, increased_budget, num_adults, num_children, num_days)
-            train_packages = create_packages("train", affordable_trains, hotels_data, increased_budget, num_adults, num_children, num_days)
+            flight_packages = create_packages("flight", affordable_flights, hotels_data, increased_budget, num_adults, num_children, num_infants, num_days)
+            train_packages = create_packages("train", affordable_trains, hotels_data, increased_budget, num_adults, num_children, num_infants, num_days)
 
             all_packages = {
                 "flight_packages": flight_packages,
@@ -282,6 +287,7 @@ if __name__ == "__main__":
             budget=50000,
             num_adults=2,
             num_children=1,
+            num_infants=0,
             num_days=4
         )
         print(result)

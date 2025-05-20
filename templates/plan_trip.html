@@ -11,6 +11,10 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <style>
+        :root {
+            --plan-trip-bg: url('{{ url_for('static', filename='images/plan-trip-bg.jpg') }}');
+        }
+        
         body {
             background-color: #f8f9fa;
             padding-top: 0;
@@ -43,7 +47,7 @@
         
         .plan-trip {
             padding: 40px 0 80px;
-            background: url('{{ url_for('static', filename='images/plan-trip-bg.jpg') }}') center/cover no-repeat fixed;
+            background: var(--plan-trip-bg) center/cover no-repeat fixed;
         }
         
         .section-header {
@@ -191,12 +195,17 @@
                                 <input type="date" id="end-date" name="end_date" required>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Number of Travellers -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-users"></i> Number of Travellers</h3>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="travelers">Number of Travelers</label>
-                                <select id="travelers" name="travelers" required>
-                                    <option value="">Select number of travelers</option>
+                                <label for="adults">Adults</label>
+                                <select id="adults" name="adults" required>
+                                    <option value="">Select</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -206,10 +215,36 @@
                                     <option value="7">7</option>
                                     <option value="8">8</option>
                                     <option value="9">9</option>
-                                    <option value="10+">10+</option>
                                 </select>
                             </div>
                             
+                            <div class="form-group">
+                                <label for="children">Children (2-12 years)</label>
+                                <select id="children" name="children">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="infants">Infants (0-2 years)</label>
+                                <select id="infants" name="infants">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Budget -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-wallet"></i> Budget</h3>
+                        
+                        <div class="form-row">
                             <div class="form-group">
                                 <label for="budget">Budget (per person)</label>
                                 <input type="range" id="budget" name="budget" min="10000" max="200000" step="1000" value="25000" data-output="budget-value" oninput="updateRangeValue(this)">
@@ -219,101 +254,6 @@
                                     <span>₹200000</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Travel Preferences -->
-                    <div class="form-section">
-                        <h3><i class="fas fa-heart"></i> Travel Preferences</h3>
-                        
-                        <div class="form-group">
-                            <label>Accommodation Type</label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="hotel" name="accommodation[]" value="hotel">
-                                    <label for="hotel">Hotel</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="hostel" name="accommodation[]" value="hostel">
-                                    <label for="hostel">Hostel</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="apartment" name="accommodation[]" value="apartment">
-                                    <label for="apartment">Apartment</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="resort" name="accommodation[]" value="resort">
-                                    <label for="resort">Resort</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Activities</label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="sightseeing" name="activities[]" value="sightseeing">
-                                    <label for="sightseeing">Sightseeing</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="adventure" name="activities[]" value="adventure">
-                                    <label for="adventure">Adventure</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="cultural" name="activities[]" value="cultural">
-                                    <label for="cultural">Cultural</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="relaxation" name="activities[]" value="relaxation">
-                                    <label for="relaxation">Relaxation</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="food-tours" name="activities[]" value="food-tours">
-                                    <label for="food-tours">Food Tours</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="shopping" name="activities[]" value="shopping">
-                                    <label for="shopping">Shopping</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Transportation</label>
-                            <div class="checkbox-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="flight" name="transportation[]" value="flight">
-                                    <label for="flight">Flight</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="train" name="transportation[]" value="train">
-                                    <label for="train">Train</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="rental-car" name="transportation[]" value="rental-car">
-                                    <label for="rental-car">Rental Car</label>
-                                </div>
-                                
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="public-transit" name="transportation[]" value="public-transit">
-                                    <label for="public-transit">Public Transit</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="special-requests">Special Requests</label>
-                            <textarea id="special-requests" name="special_requests" rows="3" placeholder="Any specific requirements or places you'd like to visit?"></textarea>
                         </div>
                     </div>
                     
