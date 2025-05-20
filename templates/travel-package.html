@@ -287,7 +287,11 @@
                   </div>
                   <div>
                     <div class="info-label"><i class="fas fa-users"></i> Travellers</div>
-                    <div class="info-value">{{ package.num_adults }} Adults{% if package.num_children > 0 %}, {{ package.num_children }} Children{% endif %}</div>
+                    <div class="info-value">
+                      {{ search_params.num_adults }} Adults
+                      {% if search_params.num_children > 0 %}, {{ search_params.num_children }} Children{% endif %}
+                      {% if search_params.num_infants > 0 %}, {{ search_params.num_infants }} Infants{% endif %}
+                    </div>
                   </div>
                   <div>
                     <div class="info-label"><i class="fas fa-calendar"></i> Days</div>
@@ -399,7 +403,11 @@
                   </div>
                   <div>
                     <div class="info-label"><i class="fas fa-users"></i> Travellers</div>
-                    <div class="info-value">{{ package.num_adults }} Adults{% if package.num_children > 0 %}, {{ package.num_children }} Children{% endif %}</div>
+                    <div class="info-value">
+                      {{ search_params.num_adults }} Adults
+                      {% if search_params.num_children > 0 %}, {{ search_params.num_children }} Children{% endif %}
+                      {% if search_params.num_infants > 0 %}, {{ search_params.num_infants }} Infants{% endif %}
+                    </div>
                   </div>
                   <div>
                     <div class="info-label"><i class="fas fa-calendar"></i> Days</div>

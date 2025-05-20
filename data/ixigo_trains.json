@@ -1,831 +1,214 @@
 [
     {
-        "train_number": "12571",
-        "train_name": "ANVT HUMSAFAR",
-        "origin_station": "LKO",
-        "destination_station": "ANVT",
-        "departure_time": "01:25",
-        "arrival_time": "08:25",
+        "train_number": "20104",
+        "train_name": "GKP LTT SF EXP",
+        "origin_station": "BNZ",
+        "destination_station": "LTT",
+        "departure_time": "03:18",
+        "arrival_time": "04:35",
         "classes": [
             {
+                "class_name": "SL",
+                "fare": "630",
+                "availability": " WL 66"
+            },
+            {
                 "class_name": "3A",
-                "fare": "1000",
+                "fare": "1650",
+                "availability": " WL 30"
+            },
+            {
+                "class_name": "2A",
+                "fare": "2360",
+                "availability": " WL 18"
+            }
+        ],
+        "url": "https://www.ixigo.com/search/result/train/LKO/LTT/22052025//1/0/0/0/ALL"
+    },
+    {
+        "train_number": "12174",
+        "train_name": "UDYOG NAGRI EXP",
+        "origin_station": "LKO",
+        "destination_station": "LTT",
+        "departure_time": "05:35",
+        "arrival_time": "05:30",
+        "classes": [
+            {
+                "class_name": "SL",
+                "fare": "630",
+                "availability": " WL 124"
+            },
+            {
+                "class_name": "3A",
+                "fare": "1650",
+                "availability": " WL 76"
+            },
+            {
+                "class_name": "2A",
+                "fare": "2360",
+                "availability": " WL 27"
+            }
+        ],
+        "url": "https://www.ixigo.com/search/result/train/LKO/LTT/22052025//1/0/0/0/ALL"
+    },
+    {
+        "train_number": "15065",
+        "train_name": "GKP PNVL EXP",
+        "origin_station": "LKO",
+        "destination_station": "PNVL",
+        "departure_time": "14:00",
+        "arrival_time": "14:50",
+        "classes": [
+            {
+                "class_name": "SL",
+                "fare": "600",
+                "availability": " WL 141"
+            },
+            {
+                "class_name": "3A",
+                "fare": "1600",
+                "availability": " WL 138"
+            },
+            {
+                "class_name": "2A",
+                "fare": "2315",
                 "availability": "WL48"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "22411",
-        "train_name": "ARUNACHAL EXP",
-        "origin_station": "LKO",
-        "destination_station": "ANVT",
-        "departure_time": "04:10",
-        "arrival_time": "11:30",
-        "classes": [
-            {
-                "class_name": "3A",
-                "fare": "880",
-                "availability": " WL 65"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1235",
-                "availability": " WL 23"
             },
             {
                 "class_name": "1A",
-                "fare": "2050",
-                "availability": "WL5"
-            },
-            {
-                "class_name": "3E",
-                "fare": "815",
-                "availability": "NOT AVL"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "12583",
-        "train_name": "ANVT DOUBLE DKR",
-        "origin_station": "LJN",
-        "destination_station": "ANVT",
-        "departure_time": "04:55",
-        "arrival_time": "12:55",
-        "classes": [
-            {
-                "class_name": "CC",
-                "fare": "665",
-                "availability": "AVL 967"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "15909",
-        "train_name": "AVADH ASSAM EXP",
-        "origin_station": "LKO",
-        "destination_station": "DLI",
-        "departure_time": "05:20",
-        "arrival_time": "15:55",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "290",
-                "availability": " WL 43"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1105",
-                "availability": " WL 12"
-            },
-            {
-                "class_name": "1A",
-                "fare": "1855",
-                "availability": "WL2"
-            },
-            {
-                "class_name": "3A",
-                "fare": "775",
+                "fare": "3925",
                 "availability": " Regret"
             }
         ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
+        "url": "https://www.ixigo.com/search/result/train/LKO/LTT/22052025//1/0/0/0/ALL"
     },
     {
-        "train_number": "12419",
-        "train_name": "GOMTI EXPRESS",
-        "origin_station": "LKO",
-        "destination_station": "NDLS",
-        "departure_time": "05:45",
-        "arrival_time": "15:00",
-        "classes": [
-            {
-                "class_name": "2S",
-                "fare": "195",
-                "availability": "WL10"
-            },
-            {
-                "class_name": "CC",
-                "fare": "725",
-                "availability": "WL9"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1250",
-                "availability": "WL4"
-            },
-            {
-                "class_name": "1A",
-                "fare": "2075",
-                "availability": "WL2"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "20503",
-        "train_name": "RAJDHANI EXP",
-        "origin_station": "LKO",
-        "destination_station": "NDLS",
-        "departure_time": "05:55",
-        "arrival_time": "13:38",
-        "classes": [
-            {
-                "class_name": "3A",
-                "fare": "1610",
-                "availability": "AVL 138"
-            },
-            {
-                "class_name": "2A",
-                "fare": "2125",
-                "availability": "WL2"
-            },
-            {
-                "class_name": "1A",
-                "fare": "2655",
-                "availability": "WL1"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "82501",
-        "train_name": "IRCTC TEJAS EXP",
+        "train_number": "12533",
+        "train_name": "PUSHPAK EXPRESS",
         "origin_station": "LJN",
-        "destination_station": "NDLS",
-        "departure_time": "06:10",
-        "arrival_time": "12:35",
-        "classes": [
-            {
-                "class_name": "CC",
-                "fare": "1701",
-                "availability": "AVL 372"
-            },
-            {
-                "class_name": "EC",
-                "fare": "2321",
-                "availability": "AVL 66"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "04011",
-        "train_name": "DBG DLI SPL",
-        "origin_station": "LKO",
-        "destination_station": "DLI",
-        "departure_time": "14:10",
-        "arrival_time": "22:40",
+        "destination_station": "CSMT",
+        "departure_time": "21:25",
+        "arrival_time": "22:45",
         "classes": [
             {
                 "class_name": "SL",
-                "fare": "385",
-                "availability": "WL18"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "12003",
-        "train_name": "SWARAN SHATABDI",
-        "origin_station": "LJN",
-        "destination_station": "NDLS",
-        "departure_time": "15:30",
-        "arrival_time": "22:25",
-        "classes": [
-            {
-                "class_name": "CC",
-                "fare": "1390",
-                "availability": "AVL 342"
-            },
-            {
-                "class_name": "EC",
-                "fare": "2155",
-                "availability": "AVL 1"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "22200",
-        "train_name": "SUSHASAN SF EXP",
-        "origin_station": "LKO",
-        "destination_station": "NZM",
-        "departure_time": "15:55",
-        "arrival_time": "00:45",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "320",
-                "availability": " WL 24"
+                "fare": "635",
+                "availability": " WL 147"
             },
             {
                 "class_name": "3E",
-                "fare": "765",
-                "availability": "WL4"
-            },
-            {
-                "class_name": "3A",
-                "fare": "825",
-                "availability": "WL20"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1155",
-                "availability": "WL4"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "22425",
-        "train_name": "VANDE BHARAT EXP",
-        "origin_station": "LKO",
-        "destination_station": "ANVT",
-        "departure_time": "17:15",
-        "arrival_time": "23:40",
-        "classes": [
-            {
-                "class_name": "CC",
-                "fare": "1410",
-                "availability": "AVL 563"
-            },
-            {
-                "class_name": "EC",
-                "fare": "2595",
-                "availability": "AVL 36"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "15707",
-        "train_name": "KIR ASR EXPRESS",
-        "origin_station": "BNZ",
-        "destination_station": "DLI",
-        "departure_time": "17:23",
-        "arrival_time": "02:55",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "315",
-                "availability": "WL53"
-            },
-            {
-                "class_name": "3E",
-                "fare": "780",
-                "availability": "WL20"
-            },
-            {
-                "class_name": "3A",
-                "fare": "845",
-                "availability": "WL22"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1205",
-                "availability": "WL10"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "14007",
-        "train_name": "SADBHAVANA EXP",
-        "origin_station": "LKO",
-        "destination_station": "ANVT",
-        "departure_time": "18:15",
-        "arrival_time": "04:45",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "295",
-                "availability": "WL21"
-            },
-            {
-                "class_name": "3E",
-                "fare": "730",
-                "availability": "WL4"
-            },
-            {
-                "class_name": "3A",
-                "fare": "790",
-                "availability": "WL12"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1120",
-                "availability": "WL4"
-            },
-            {
-                "class_name": "1A",
-                "fare": "1885",
-                "availability": "WL2"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "15743",
-        "train_name": "FARAKKA EXP",
-        "origin_station": "LKO",
-        "destination_station": "DLI",
-        "departure_time": "18:55",
-        "arrival_time": "06:05",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "310",
-                "availability": "WL35"
-            },
-            {
-                "class_name": "3A",
-                "fare": "835",
-                "availability": "WL17"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1185",
-                "availability": "WL2"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "14205",
-        "train_name": "AYODHYA EXPRESS",
-        "origin_station": "LKO",
-        "destination_station": "DLI",
-        "departure_time": "19:50",
-        "arrival_time": "04:20",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "290",
-                "availability": " WL 43"
-            },
-            {
-                "class_name": "3E",
-                "fare": "720",
-                "availability": "WL9"
-            },
-            {
-                "class_name": "3A",
-                "fare": "775",
-                "availability": "WL15"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1105",
-                "availability": "WL4"
-            },
-            {
-                "class_name": "1A",
-                "fare": "1855",
-                "availability": "WL1"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "02569",
-        "train_name": "DBG NDLS SPL",
-        "origin_station": "ASH",
-        "destination_station": "NDLS",
-        "departure_time": "20:05",
-        "arrival_time": "04:00",
-        "classes": [
-            {
-                "class_name": "3E",
-                "fare": "1090",
-                "availability": "WL1"
-            },
-            {
-                "class_name": "3A",
-                "fare": "1155",
-                "availability": "WL1"
-            },
-            {
-                "class_name": "SL",
-                "fare": "435",
-                "availability": " Regret"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "12391",
-        "train_name": "SHRAMJEEVI EXP",
-        "origin_station": "LKO",
-        "destination_station": "NDLS",
-        "departure_time": "20:05",
-        "arrival_time": "04:40",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "325",
-                "availability": " WL 23"
-            },
-            {
-                "class_name": "3A",
-                "fare": "835",
-                "availability": "WL6"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1170",
-                "availability": "WL2"
-            },
-            {
-                "class_name": "1A",
-                "fare": "1960",
-                "availability": "WL2"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "12565",
-        "train_name": "BIHAR S KRANTI",
-        "origin_station": "BNZ",
-        "destination_station": "NDLS",
-        "departure_time": "20:18",
-        "arrival_time": "05:05",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "345",
-                "availability": " WL 22"
-            },
-            {
-                "class_name": "3E",
-                "fare": "835",
-                "availability": " WL 12"
-            },
-            {
-                "class_name": "3A",
-                "fare": "905",
-                "availability": " WL 15"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1265",
-                "availability": "WL8"
-            },
-            {
-                "class_name": "1A",
-                "fare": "2100",
-                "availability": "WL2"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "15127",
-        "train_name": "KASHI V NATH EXP",
-        "origin_station": "LKO",
-        "destination_station": "NDLS",
-        "departure_time": "20:20",
-        "arrival_time": "05:45",
-        "classes": [
-            {
-                "class_name": "3E",
-                "fare": "730",
-                "availability": "WL5"
-            },
-            {
-                "class_name": "3A",
-                "fare": "790",
-                "availability": "WL13"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1120",
-                "availability": "WL5"
-            },
-            {
-                "class_name": "1A",
-                "fare": "1885",
-                "availability": "WL1"
-            },
-            {
-                "class_name": "SL",
-                "fare": "295",
-                "availability": " Regret"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "02563",
-        "train_name": "BJU NDLS SPL",
-        "origin_station": "ASH",
-        "destination_station": "NDLS",
-        "departure_time": "20:25",
-        "arrival_time": "05:10",
-        "classes": [
-            {
-                "class_name": "3E",
-                "fare": "1040",
-                "availability": "AVL 1"
-            },
-            {
-                "class_name": "SL",
-                "fare": "405",
-                "availability": "WL11"
-            },
-            {
-                "class_name": "3A",
-                "fare": "1110",
-                "availability": "WL1"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "04213",
-        "train_name": "ANVT SUMMER SPL",
-        "origin_station": "LKO",
-        "destination_station": "ANVT",
-        "departure_time": "20:55",
-        "arrival_time": "06:00",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "385",
-                "availability": "WL15"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "12555",
-        "train_name": "GORAKHDHAM EXP",
-        "origin_station": "ASH",
-        "destination_station": "NDLS",
-        "departure_time": "21:35",
-        "arrival_time": "05:15",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "345",
+                "fare": "1560",
                 "availability": " WL 87"
             },
             {
                 "class_name": "3A",
-                "fare": "895",
-                "availability": " WL 59"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1250",
-                "availability": " WL 31"
+                "fare": "1665",
+                "availability": " WL 97"
             },
             {
                 "class_name": "1A",
-                "fare": "2075",
-                "availability": "WL8"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "14207",
-        "train_name": "PADMAVAT EXP",
-        "origin_station": "LKO",
-        "destination_station": "DLI",
-        "departure_time": "21:40",
-        "arrival_time": "06:30",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "290",
-                "availability": " WL 23"
-            },
-            {
-                "class_name": "3E",
-                "fare": "720",
-                "availability": "WL7"
-            },
-            {
-                "class_name": "3A",
-                "fare": "775",
-                "availability": "WL6"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1105",
-                "availability": "WL2"
-            },
-            {
-                "class_name": "1A",
-                "fare": "1855",
-                "availability": "WL1"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "12553",
-        "train_name": "VAISHALI EXP",
-        "origin_station": "BNZ",
-        "destination_station": "NDLS",
-        "departure_time": "21:41",
-        "arrival_time": "06:30",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "345",
-                "availability": " WL 44"
-            },
-            {
-                "class_name": "3E",
-                "fare": "835",
-                "availability": " WL 14"
-            },
-            {
-                "class_name": "3A",
-                "fare": "905",
-                "availability": " WL 26"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1265",
-                "availability": " WL 19"
-            },
-            {
-                "class_name": "1A",
-                "fare": "2100",
-                "availability": "WL2"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "12229",
-        "train_name": "LUCKNOW MAIL",
-        "origin_station": "LKO",
-        "destination_station": "NDLS",
-        "departure_time": "22:00",
-        "arrival_time": "06:55",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "325",
-                "availability": "WL44"
-            },
-            {
-                "class_name": "3E",
-                "fare": "775",
-                "availability": "WL9"
-            },
-            {
-                "class_name": "3A",
-                "fare": "835",
-                "availability": "WL14"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1170",
+                "fare": "4045",
                 "availability": "WL10"
             },
             {
-                "class_name": "1A",
-                "fare": "1960",
-                "availability": "WL4"
+                "class_name": "2A",
+                "fare": "2385",
+                "availability": " Regret"
             }
         ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
+        "url": "https://www.ixigo.com/search/result/train/LKO/LTT/22052025//1/0/0/0/ALL"
     },
     {
-        "train_number": "12225",
-        "train_name": "KAIFIYAT EXP",
+        "train_number": "12108",
+        "train_name": "STP LTT SF EXP",
+        "origin_station": "ASH",
+        "destination_station": "LTT",
+        "departure_time": "22:35",
+        "arrival_time": "21:50",
+        "classes": [
+            {
+                "class_name": "SL",
+                "fare": "630",
+                "availability": " WL 116"
+            },
+            {
+                "class_name": "3A",
+                "fare": "1650",
+                "availability": " WL 73"
+            },
+            {
+                "class_name": "2A",
+                "fare": "2360",
+                "availability": " WL 24"
+            }
+        ],
+        "url": "https://www.ixigo.com/search/result/train/LKO/LTT/22052025//1/0/0/0/ALL"
+    },
+    {
+        "train_number": "22537",
+        "train_name": "KUSHINAGAR EXP",
         "origin_station": "BNZ",
-        "destination_station": "DLI",
-        "departure_time": "22:25",
-        "arrival_time": "07:05",
+        "destination_station": "LTT",
+        "departure_time": "22:43",
+        "arrival_time": "00:20",
         "classes": [
             {
                 "class_name": "SL",
-                "fare": "345",
-                "availability": " WL 43"
+                "fare": "630",
+                "availability": " WL 93"
             },
             {
                 "class_name": "3A",
-                "fare": "895",
-                "availability": "WL15"
+                "fare": "1650",
+                "availability": " WL 50"
             },
             {
                 "class_name": "2A",
-                "fare": "1250",
-                "availability": "WL11"
+                "fare": "2360",
+                "availability": " WL 20"
             },
             {
                 "class_name": "1A",
-                "fare": "2075",
-                "availability": "WL3"
+                "fare": "4000",
+                "availability": "WL6"
             }
         ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
+        "url": "https://www.ixigo.com/search/result/train/LKO/LTT/22052025//1/0/0/0/ALL"
     },
     {
-        "train_number": "12429",
-        "train_name": "LKO NDLS AC EXP",
-        "origin_station": "LKO",
-        "destination_station": "NDLS",
-        "departure_time": "23:30",
-        "arrival_time": "07:30",
+        "train_number": "19038",
+        "train_name": "AVADH EXPRESS",
+        "origin_station": "GTNR",
+        "destination_station": "BDTS",
+        "departure_time": "23:07",
+        "arrival_time": "04:05",
         "classes": [
             {
                 "class_name": "3E",
-                "fare": "775",
-                "availability": "WL13"
+                "fare": "1615",
+                "availability": " WL 42"
             },
             {
                 "class_name": "3A",
-                "fare": "835",
-                "availability": "WL17"
+                "fare": "1720",
+                "availability": " WL 70"
             },
             {
                 "class_name": "2A",
-                "fare": "1170",
-                "availability": " WL 23"
+                "fare": "2495",
+                "availability": " WL 29"
             },
             {
                 "class_name": "1A",
-                "fare": "1960",
-                "availability": "WL5"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "12557",
-        "train_name": "SAPT KRANTI EXP",
-        "origin_station": "LKO",
-        "destination_station": "ANVT",
-        "departure_time": "23:40",
-        "arrival_time": "07:40",
-        "classes": [
+                "fare": "4240",
+                "availability": " WL 8"
+            },
             {
                 "class_name": "SL",
-                "fare": "315",
-                "availability": "WL11"
-            },
-            {
-                "class_name": "3E",
-                "fare": "750",
-                "availability": "WL3"
-            },
-            {
-                "class_name": "3A",
-                "fare": "810",
-                "availability": "WL5"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1135",
-                "availability": "WL1"
-            },
-            {
-                "class_name": "1A",
-                "fare": "1905",
-                "availability": "WL1"
+                "fare": "645",
+                "availability": " Regret"
             }
         ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
-    },
-    {
-        "train_number": "22417",
-        "train_name": "MAHAMANA EXP",
-        "origin_station": "LKO",
-        "destination_station": "NDLS",
-        "departure_time": "23:55",
-        "arrival_time": "08:05",
-        "classes": [
-            {
-                "class_name": "SL",
-                "fare": "365",
-                "availability": "WL13"
-            },
-            {
-                "class_name": "3A",
-                "fare": "945",
-                "availability": "WL8"
-            },
-            {
-                "class_name": "2A",
-                "fare": "1330",
-                "availability": "WL2"
-            },
-            {
-                "class_name": "1A",
-                "fare": "2235",
-                "availability": "WL1"
-            }
-        ],
-        "url": "https://www.ixigo.com/search/result/train/LKO/DEC/22052025//1/0/0/0/ALL"
+        "url": "https://www.ixigo.com/search/result/train/LKO/LTT/22052025//1/0/0/0/ALL"
     }
 ]
